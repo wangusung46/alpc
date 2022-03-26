@@ -234,25 +234,30 @@ public class VaccineServiceImpl implements VaccineService {
                     WeekMaxMin weekMaxMin = new WeekMaxMin();
                     List<MaxMin> maxMins = new ArrayList<>();
                     MaxMin maxMin = new MaxMin();
-                    if (maxAdult < Integer.parseInt(values[6]) || maxMin.getMaxAdult() == null) {
+                    if (maxAdult < Integer.parseInt(values[6])) {
                         maxAdult = Integer.parseInt(values[6]);
-                        maxMin.setMaxAdult(maxAdult);
+                        
                     }
-                    if (minAdult > Integer.parseInt(values[6]) || maxMin.getMinAdult() == null) {
+                    if (minAdult > Integer.parseInt(values[6])) {
                         minAdult = Integer.parseInt(values[6]);
-                        maxMin.setMinAdult(minAdult);
+                        
                     }
-                    if (maxChild < Integer.parseInt(values[8]) || maxMin.getMaxChild() == null) {
+                    if (maxChild < Integer.parseInt(values[8])) {
                         maxChild = Integer.parseInt(values[8]);
-                        maxMin.setMaxChild(maxChild);
+                        
                     }
-                    if (minChild > Integer.parseInt(values[8]) || maxMin.getMinChild() == null) {
+                    if (minChild > Integer.parseInt(values[8])) {
                         minChild = Integer.parseInt(values[8]);
-                        maxMin.setMinChild(minChild);
+                        
                     }
                     System.out.println(maxMin);
                     if (isLocalDateInTheSameWeek(temp, LocalDate.parse(values[0])) == false) {
 
+                        maxMin.setMaxAdult(maxAdult);
+                        maxMin.setMinAdult(minAdult);
+                        maxMin.setMaxChild(maxChild);
+                        maxMin.setMinChild(minChild);
+                        
                         temp = LocalDate.parse(values[0]);
                         maxAdult = Integer.MIN_VALUE;
                         minAdult = Integer.MAX_VALUE;
