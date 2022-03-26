@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.rayhan.alpc.vax.model.MaxMin;
 import com.rayhan.alpc.vax.model.Type;
 import com.rayhan.alpc.vax.model.Vaccine;
+import com.rayhan.alpc.vax.model.WeekMaxMin;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
@@ -20,4 +21,6 @@ public interface VaccineService {
     public List<Type> getVaccinesByType() throws JsonProcessingException, FileNotFoundException, IOException, ParseException;
 
     public List<MaxMin> getVaccinesByMaxMin() throws JsonProcessingException, FileNotFoundException, IOException, ParseException;
+
+    public List<WeekMaxMin> getVaccinesByTypeWeek() throws JsonProcessingException, FileNotFoundException, IOException, ParseException;
 }
