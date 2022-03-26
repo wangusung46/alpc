@@ -12,9 +12,9 @@ import lombok.Data;
  * @author Khanza
  */
 @Data
-public class WeekMaxMin {
+public class WeekType {
     
     private String week;
-    private List<MaxMin> maxMins;
+    private List<Type> types;
      
 }

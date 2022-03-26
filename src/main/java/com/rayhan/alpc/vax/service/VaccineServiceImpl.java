@@ -5,6 +5,7 @@ import com.rayhan.alpc.vax.model.MaxMin;
 import com.rayhan.alpc.vax.model.Type;
 import com.rayhan.alpc.vax.model.Vaccine;
 import com.rayhan.alpc.vax.model.WeekMaxMin;
+import com.rayhan.alpc.vax.model.WeekType;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -12,8 +13,6 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 import java.util.List;
@@ -92,23 +91,8 @@ public class VaccineServiceImpl implements VaccineService {
     }
 
     @Override
-    public List<Type> getVaccinesByType() throws JsonProcessingException, FileNotFoundException, IOException, ParseException {
-        List<Type> response = new ArrayList<>();
-        Integer temp = 0;
-        Type type1 = new Type();
-        Type type2 = new Type();
-        Type type3 = new Type();
-        Type type4 = new Type();
-        Type type5 = new Type();
-        Type type6 = new Type();
-        Type type7 = new Type();
-        Type type8 = new Type();
-        Type type9 = new Type();
-        Type type10 = new Type();
-        Type type11 = new Type();
-        Type type12 = new Type();
-        Type type13 = new Type();
-        Type type14 = new Type();
+    public List<WeekType> getVaccinesByType() throws JsonProcessingException, FileNotFoundException, IOException, ParseException {
+        List<WeekType> response = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader("vax_state.csv"))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -119,6 +103,25 @@ public class VaccineServiceImpl implements VaccineService {
                         + "cumul_partial_adol,cumul_full_adol,cumul_partial_child,cumul_full_child,"
                         + "pfizer1,pfizer2,pfizer3,sinovac1,sinovac2,sinovac3,astra1,astra2,astra3,"
                         + "sinopharm1,sinopharm2,sinopharm3,cansino,cansino3,pending1,pending2,pending3")) {
+
+                    WeekType weekType = new WeekType();
+                    List<Type> types = new ArrayList<>();
+                    LocalDate tempDate = LocalDate.of(1999, 1, 1);
+                    Integer i = 1;
+                    Type type1 = new Type();
+                    Type type2 = new Type();
+                    Type type3 = new Type();
+                    Type type4 = new Type();
+                    Type type5 = new Type();
+                    Type type6 = new Type();
+                    Type type7 = new Type();
+                    Type type8 = new Type();
+                    Type type9 = new Type();
+                    Type type10 = new Type();
+                    Type type11 = new Type();
+                    Type type12 = new Type();
+                    Type type13 = new Type();
+                    Type type14 = new Type();
 
                     type1.setId(1L);
                     type1.setType("pfizer1");
@@ -176,41 +179,51 @@ public class VaccineServiceImpl implements VaccineService {
                     type14.setType("cansino3");
                     type14.setTotal(Integer.parseInt(values[31]) + type14.getTotal());
 
+                    if (isLocalDateInTheSameWeek(tempDate, LocalDate.parse(values[0])) == false) {
+
+                        tempDate = LocalDate.parse(values[0]);
+
+                        types.add(type1);
+                        types.add(type2);
+                        types.add(type3);
+                        types.add(type4);
+                        types.add(type5);
+                        types.add(type6);
+                        types.add(type7);
+                        types.add(type8);
+                        types.add(type9);
+                        types.add(type10);
+                        types.add(type11);
+                        types.add(type12);
+                        types.add(type13);
+                        types.add(type14);
+                        weekType.setWeek("Week " + values[0]);
+                        weekType.setTypes(types);
+                        response.add(weekType);
+                        i++;
+                    }
                 }
             }
-            response.add(type1);
-            response.add(type2);
-            response.add(type3);
-            response.add(type4);
-            response.add(type5);
-            response.add(type6);
-            response.add(type7);
-            response.add(type8);
-            response.add(type9);
-            response.add(type10);
-            response.add(type11);
-            response.add(type12);
-            response.add(type13);
-            response.add(type14);
+
         }
         return response;
     }
 
     @Override
-    public List<MaxMin> getVaccinesByMaxMin() throws JsonProcessingException, FileNotFoundException, IOException, ParseException {
-        List<MaxMin> response = new ArrayList<>();
-        MaxMin maxMin = new MaxMin();
+    public List<WeekMaxMin> getVaccinesByMaxMin() throws JsonProcessingException, FileNotFoundException, IOException, ParseException {
+        List<WeekMaxMin> response = new ArrayList<>();
+
         Integer maxAdult = Integer.MIN_VALUE;
         Integer minAdult = Integer.MAX_VALUE;
         Integer maxChild = Integer.MIN_VALUE;
         Integer minChild = Integer.MAX_VALUE;
-
+        MaxMin maxMin = new MaxMin();
         LocalDate temp = LocalDate.of(1999, 1, 1);
 
         try (BufferedReader br = new BufferedReader(new FileReader("vax_state.csv"))) {
             String line;
             while ((line = br.readLine()) != null) {
-//                MaxMin maxMin = new MaxMin();
+
                 String[] values = line.split(",");
                 if (!line.equals("date,state,daily_partial,daily_full,daily_booster,daily,"
                         + "daily_partial_adol,daily_full_adol,daily_partial_child,daily_full_child,"
@@ -218,7 +231,8 @@ public class VaccineServiceImpl implements VaccineService {
                         + "cumul_partial_adol,cumul_full_adol,cumul_partial_child,cumul_full_child,"
                         + "pfizer1,pfizer2,pfizer3,sinovac1,sinovac2,sinovac3,astra1,astra2,astra3,"
                         + "sinopharm1,sinopharm2,sinopharm3,cansino,cansino3,pending1,pending2,pending3")) {
-
+                    WeekMaxMin weekMaxMin = new WeekMaxMin();
+                    List<MaxMin> maxMins = new ArrayList<>();
                     if (maxAdult < Integer.parseInt(values[6])) {
                         maxAdult = Integer.parseInt(values[6]);
                         maxMin.setMaxAdult(maxAdult);
@@ -233,82 +247,25 @@ public class VaccineServiceImpl implements VaccineService {
                     }
                     if (minChild > Integer.parseInt(values[8])) {
                         minChild = Integer.parseInt(values[8]);
-                        
                         maxMin.setMinChild(minChild);
                     }
                     if (isLocalDateInTheSameWeek(temp, LocalDate.parse(values[0])) == false) {
-                        
-                        
+
                         temp = LocalDate.parse(values[0]);
                         maxAdult = Integer.MIN_VALUE;
                         minAdult = Integer.MAX_VALUE;
                         maxChild = Integer.MIN_VALUE;
                         minChild = Integer.MAX_VALUE;
-                        response.add(maxMin);
+
+                        maxMins.add(maxMin);
+                        weekMaxMin.setMaxMins(maxMins);
+                        response.add(weekMaxMin);
                     }
+
                 }
             }
+
         }
-        System.out.println(response);
-        return response;
-    }
-
-    @Override
-    public List<WeekMaxMin> getVaccinesByTypeWeek() throws JsonProcessingException, FileNotFoundException, IOException, ParseException {
-        List<WeekMaxMin> response = new ArrayList<>();
-        WeekMaxMin weekMaxMin = new WeekMaxMin();
-        List<MaxMin> maxMins = new ArrayList<>();
-        MaxMin maxMin = new MaxMin();
-
-        Integer maxAdult = Integer.MIN_VALUE;
-        Integer minAdult = Integer.MAX_VALUE;
-        Integer maxChild = Integer.MIN_VALUE;
-        Integer minChild = Integer.MAX_VALUE;
-
-        LocalDate temp = LocalDate.of(1999, 1, 1);
-
-        try (BufferedReader br = new BufferedReader(new FileReader("vax_state.csv"))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-
-                String[] values = line.split(",");
-                if (!line.equals("date,state,daily_partial,daily_full,daily_booster,daily,"
-                        + "daily_partial_adol,daily_full_adol,daily_partial_child,daily_full_child,"
-                        + "cumul_partial,cumul_full,cumul_booster,cumul,"
-                        + "cumul_partial_adol,cumul_full_adol,cumul_partial_child,cumul_full_child,"
-                        + "pfizer1,pfizer2,pfizer3,sinovac1,sinovac2,sinovac3,astra1,astra2,astra3,"
-                        + "sinopharm1,sinopharm2,sinopharm3,cansino,cansino3,pending1,pending2,pending3")) {
-                    if (isLocalDateInTheSameWeek(temp, LocalDate.parse(values[0])) == false) {
-                        System.out.println(isLocalDateInTheSameWeek(temp, LocalDate.parse(values[0])));
-                        temp = LocalDate.parse(values[0]);
-                        continue;
-                    }
-
-                    if (maxAdult < Integer.parseInt(values[6])) {
-                        maxAdult = Integer.parseInt(values[6]);
-                        maxMin.setMaxAdult(maxAdult);
-                    }
-                    if (minAdult > Integer.parseInt(values[6])) {
-                        minAdult = Integer.parseInt(values[6]);
-                        maxMin.setMinAdult(minAdult);
-                    }
-                    if (maxChild < Integer.parseInt(values[8])) {
-                        maxChild = Integer.parseInt(values[8]);
-                        maxMin.setMaxChild(maxChild);
-                    }
-                    if (minChild > Integer.parseInt(values[8])) {
-                        minChild = Integer.parseInt(values[8]);
-                        maxMin.setMinChild(minChild);
-                    }
-
-                    maxMins.add(maxMin);
-                }
-
-            }
-            weekMaxMin.setMaxMins(maxMins);
-            response.add(weekMaxMin);
-        }
-
         return response;
     }
 

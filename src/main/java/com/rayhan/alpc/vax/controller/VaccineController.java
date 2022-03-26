@@ -5,6 +5,7 @@ import com.rayhan.alpc.vax.model.MaxMin;
 import com.rayhan.alpc.vax.model.Type;
 import com.rayhan.alpc.vax.model.Vaccine;
 import com.rayhan.alpc.vax.model.WeekMaxMin;
+import com.rayhan.alpc.vax.model.WeekType;
 import com.rayhan.alpc.vax.service.VaccineService;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -33,22 +34,15 @@ public class VaccineController {
     
     @GetMapping(value = "/vaccine/max-min", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> doVaccinesByMaxMin() throws JsonProcessingException, IOException, FileNotFoundException, ParseException {
-        List<MaxMin> response = new ArrayList<>();
+        List<WeekMaxMin> response = new ArrayList<>();
         response = vaccineService.getVaccinesByMaxMin();
         return ResponseEntity.ok(response);
     }
     
     @GetMapping(value = "/vaccine/type", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> doVaccinesByType() throws JsonProcessingException, IOException, FileNotFoundException, ParseException {
-        List<Type> response = new ArrayList<>();
+        List<WeekType> response = new ArrayList<>();
         response = vaccineService.getVaccinesByType();
-        return ResponseEntity.ok(response);
-    }
-    
-    @GetMapping(value = "/vaccine/week", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> doVaccinesByTypeWeek() throws JsonProcessingException, IOException, FileNotFoundException, ParseException {
-        List<WeekMaxMin> response = new ArrayList<>();
-        response = vaccineService.getVaccinesByTypeWeek();
         return ResponseEntity.ok(response);
     }
 
