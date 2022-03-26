@@ -7,12 +7,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -31,7 +27,7 @@ public class RegistrationServiceImpl implements RegistrationService {
                 String[] values = line.split(",");
                 if (!line.equals("date,state,total,phase2,mysj,call,web,children,children_solo,adolescents,elderly,comorb,oku")) {
                     Registration registration = new Registration();
-                    registration.setDate(new SimpleDateFormat("yyyy-mm-dd").parse(values[0]));
+                    registration.setDate(values[0]);
                     registration.setState(values[1]);
                     registration.setTotal(Integer.parseInt(values[2]));
                     registration.setPhase(Integer.parseInt(values[3]));
@@ -48,35 +44,6 @@ public class RegistrationServiceImpl implements RegistrationService {
                 }
             }
         }
-        return response;
-    }
-
-    @Override
-    public Registration getRegistration(Long request) throws JsonProcessingException, IOException, FileNotFoundException, ParseException {
-        Registration response = new Registration();
-//        try (BufferedReader br = new BufferedReader(new FileReader("vaxreg_state.csv"))) {
-//            String line;
-//            while ((line = br.readLine()) != null) {
-//                String[] values = line.split(",");
-//                if (!line.equals("date,state,total,phase2,mysj,call,web,children,children_solo,adolescents,elderly,comorb,oku")) {
-//                    Registration registration = new Registration();
-//                    registration.setDate(new SimpleDateFormat("yyyy-mm-dd").parse(values[0]));
-//                    registration.setState(values[1]);
-//                    registration.setTotal(Integer.parseInt(values[2]));
-//                    registration.setPhase(Integer.parseInt(values[3]));
-//                    registration.setMysj(Integer.parseInt(values[4]));
-//                    registration.setCall(Integer.parseInt(values[5]));
-//                    registration.setWeb(Integer.parseInt(values[6]));
-//                    registration.setChildren(Integer.parseInt(values[7]));
-//                    registration.setChildrenSolo(Integer.parseInt(values[8]));
-//                    registration.setAdolescents(Integer.parseInt(values[9]));
-//                    registration.setElderly(Integer.parseInt(values[10]));
-//                    registration.setComorb(Integer.parseInt(values[11]));
-//                    registration.setOku(Integer.parseInt(values[12]));
-//                    response.add(registration);
-//                }
-//            }
-//        }
         return response;
     }
 

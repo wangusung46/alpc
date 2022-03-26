@@ -15,6 +15,4 @@ public interface RegistrationService {
 
     public List<Registration> getRegistrations() throws JsonProcessingException, FileNotFoundException, IOException, ParseException;
 
-    public Registration getRegistration(Long request) throws JsonProcessingException, IOException, FileNotFoundException, ParseException;
-
 }

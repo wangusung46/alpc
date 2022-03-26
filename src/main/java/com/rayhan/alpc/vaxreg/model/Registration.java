@@ -15,7 +15,7 @@ import lombok.Data;
 public class Registration {
     
     private Long id = 0L;
-    private Date date;
+    private String date;
     private String state;
     private Integer total;
     private Integer phase;

@@ -12,7 +12,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -25,13 +24,6 @@ public class RegistrationController {
     public ResponseEntity<?> doRegistrations() throws JsonProcessingException, IOException, FileNotFoundException, ParseException {
         List<Registration> response = new ArrayList<>();
         response = registrationService.getRegistrations();
-        return ResponseEntity.ok(response);
-    }
-
-    @GetMapping(value = "/registration/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> doRegistration(@PathVariable("id") Long request) throws JsonProcessingException, IOException, FileNotFoundException, ParseException {
-        Registration response = new Registration();
-        response = registrationService.getRegistration(request);
         return ResponseEntity.ok(response);
     }
 

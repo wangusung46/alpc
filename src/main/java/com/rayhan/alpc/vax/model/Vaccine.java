@@ -15,7 +15,7 @@ import lombok.Data;
 public class Vaccine {
 
     private Long id = 0L;
-    private Date date;
+    private String date;
     private String state;
     private Integer dailyPartial;
     private Integer dailyFull;
