@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
-    <title>Type Vaccine</title>
+    <title>Registration</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -20,12 +20,12 @@
     <header class="p-3 bg-dark text-white ">
         <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                <h1 class="h4 mt-2 mx-5 fw-bold">Type Vaccine</h1>
+                <h1 class="h4 mt-2 mx-5 fw-bold">Registration</h1>
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="Regis.html" class="nav-link px-2 text-white">Registration</a></li>
+                    <li><a href="Regis.html" class="nav-link px-2 text-info">Registration</a></li>
                     <li><a href="Vaccine.html" class="nav-link px-2 text-white">Vaccine</a></li>
                     <li><a href="Max-Min.html" class="nav-link px-2 text-white">Max-Min Vaccine</a></li>
-                    <li><a href="Type.html" class="nav-link px-2 text-info">Type Vaccine</a></li>
+                    <li><a href="Type.html" class="nav-link px-2 text-white">Type Vaccine</a></li>
                 </ul>
             </div>
         </div>
@@ -37,25 +37,23 @@
                     <table id="vaccine" class="table table-striped dt-responsive nowrap" style="width:100%">
                         <thead class="text-center">
                             <tr>
-                                <th>Week</th>
-                                <th>Total Phizer 1</th>
-                                <th>Total Phizer 2</th>
-                                <th>Total Phizer 3</th>
-                                <th>Total Sinovac 1</th>
-                                <th>Total Sinovac 2</th>
-                                <th>Total Sinovac 3</th>
-                                <th>Total Astra 1</th>
-                                <th>Total Astra 2</th>
-                                <th>Total Astra 3</th>
-                                <th>Total Sinopharm 1</th>
-                                <th>Total Sinopharm 2</th>
-                                <th>Total Sinopharm 3</th>
-                                <th>Total Cansino</th>
-                                <th>Total Cansino 3</th>
+                                <th>ID</th>
+                                <th>Date</th>
+                                <th>State</th>
+                                <th>Total</th>
+                                <th>Phase</th>
+                                <th>Mysj</th>
+                                <th>Call</th>
+                                <th>Web</th>
+                                <th>Children</th>
+                                <th>Children Solo</th>
+                                <th>Adol Escents</th>
+                                <th>Elderly</th>
+                                <th>Comorb</th>
+                                <th>Oku</th>
                             </tr>
                         </thead>
                         <tbody id="dataitems">
-
                         </tbody>
                     </table>
                 </div>
@@ -78,7 +76,7 @@
                 responsive: true,
                 ajax: function (data, callback, settings) {
                     $.ajax({
-                        url: "https://immense-island-33949.herokuapp.com/vaccine/type",
+                        url: "http://localhost:8080/registration",
                         type: 'GET',
                         crossDomain: true,
                         dataType: 'json',
@@ -89,20 +87,20 @@
                     });
                 },
                 columns: [
-                    { data: "week" },
-                    { data: "types.0.total" },
-                    { data: "types.1.total" },
-                    { data: "types.2.total" },
-                    { data: "types.3.total" },
-                    { data: "types.4.total" },
-                    { data: "types.6.total" },
-                    { data: "types.7.total" },
-                    { data: "types.8.total" },
-                    { data: "types.9.total" },
-                    { data: "types.10.total" },
-                    { data: "types.11.total" },
-                    { data: "types.12.total" },
-                    { data: "types.13.total" },
+                    { data: "id" },
+                    { data: "date" },
+                    { data: "state" },
+                    { data: "total" },
+                    { data: "phase" },
+                    { data: "mysj" },
+                    { data: "call" },
+                    { data: "web" },
+                    { data: "children" },
+                    { data: "childrenSolo" },
+                    { data: "adolescents" },
+                    { data: "elderly" },
+                    { data: "comorb" },
+                    { data: "oku" },
                 ]
             });
         });

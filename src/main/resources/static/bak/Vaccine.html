@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
-    <title>Registration</title>
+    <title>Vaccine</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -20,10 +20,10 @@
     <header class="p-3 bg-dark text-white ">
         <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                <h1 class="h4 mt-2 mx-5 fw-bold">Registration</h1>
+                <h1 class="h4 mt-2 mx-5 fw-bold">Vaccine</h1>
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="Regis.html" class="nav-link px-2 text-info">Registration</a></li>
-                    <li><a href="Vaccine.html" class="nav-link px-2 text-white">Vaccine</a></li>
+                    <li><a href="Regis.html" class="nav-link px-2 text-white">Registration</a></li>
+                    <li><a href="Vaccine.html" class="nav-link px-2 text-info">Vaccine</a></li>
                     <li><a href="Max-Min.html" class="nav-link px-2 text-white">Max-Min Vaccine</a></li>
                     <li><a href="Type.html" class="nav-link px-2 text-white">Type Vaccine</a></li>
                 </ul>
@@ -40,20 +40,43 @@
                                 <th>ID</th>
                                 <th>Date</th>
                                 <th>State</th>
-                                <th>Total</th>
-                                <th>Phase</th>
-                                <th>Mysj</th>
-                                <th>Call</th>
-                                <th>Web</th>
-                                <th>Children</th>
-                                <th>Children Solo</th>
-                                <th>Adol Escents</th>
-                                <th>Elderly</th>
-                                <th>Comorb</th>
-                                <th>Oku</th>
+                                <th>Daily Partial</th>
+                                <th>Daily Full</th>
+                                <th>Daily Booster</th>
+                                <th>Daily</th>
+                                <th>Daily Partial Adol</th>
+                                <th>Daily Full Adol</th>
+                                <th>Daily Partial Child</th>
+                                <th>Daily Full Child</th>
+                                <th>Cumul Partial</th>
+                                <th>Cumul Full</th>
+                                <th>Cumul Booster</th>
+                                <th>Cumul</th>
+                                <th>Cumul Partial Adol</th>
+                                <th>Cumul Full Adol</th>
+                                <th>Cumul Partial Child</th>
+                                <th>Cumul Full Child</th>
+                                <th>Pfizer 1</th>
+                                <th>Pfizer 2</th>
+                                <th>Pfizer 3</th>
+                                <th>Sinovac 1</th>
+                                <th>Sinovac 2</th>
+                                <th>Sinovac 3</th>
+                                <th>Astra 1</th>
+                                <th>Astra 2</th>
+                                <th>Astra 3</th>
+                                <th>Sinopharm 1</th>
+                                <th>Sinopharm 2</th>
+                                <th>Sinopharm 3</th>
+                                <th>Cansino</th>
+                                <th>Cansino 3</th>
+                                <th>Pending 1</th>
+                                <th>Pending 2</th>
+                                <th>Pending 3</th>
                             </tr>
                         </thead>
                         <tbody id="dataitems">
+
                         </tbody>
                     </table>
                 </div>
@@ -76,7 +99,7 @@
                 responsive: true,
                 ajax: function (data, callback, settings) {
                     $.ajax({
-                        url: "https://immense-island-33949.herokuapp.com/registration",
+                        url: "http://localhost:8080/vaccine?month=&state=",
                         type: 'GET',
                         crossDomain: true,
                         dataType: 'json',
@@ -90,17 +113,39 @@
                     { data: "id" },
                     { data: "date" },
                     { data: "state" },
-                    { data: "total" },
-                    { data: "phase" },
-                    { data: "mysj" },
-                    { data: "call" },
-                    { data: "web" },
-                    { data: "children" },
-                    { data: "childrenSolo" },
-                    { data: "adolescents" },
-                    { data: "elderly" },
-                    { data: "comorb" },
-                    { data: "oku" },
+                    { data: "dailyPartial" },
+                    { data: "dailyFull" },
+                    { data: "dailyBooster" },
+                    { data: "daily" },
+                    { data: "dailyPartialAdol" },
+                    { data: "dailyFullAdol" },
+                    { data: "dailyPartialChild" },
+                    { data: "dailyFullChild" },
+                    { data: "cumulPartial" },
+                    { data: "cumulFull" },
+                    { data: "cumulBooster" },
+                    { data: "cumul" },
+                    { data: "cumulPartialAdol" },
+                    { data: "cumulFullAdol" },
+                    { data: "cumulPartialChild" },
+                    { data: "cumulFullChild" },
+                    { data: "pfizer1" },
+                    { data: "pfizer2" },
+                    { data: "pfizer3" },
+                    { data: "sinovac1" },
+                    { data: "sinovac2" },
+                    { data: "sinovac3" },
+                    { data: "astra1" },
+                    { data: "astra2" },
+                    { data: "astra3" },
+                    { data: "sinopharm1" },
+                    { data: "sinopharm2" },
+                    { data: "sinopharm3" },
+                    { data: "cansino" },
+                    { data: "cansino3" },
+                    { data: "pending1" },
+                    { data: "pending2" },
+                    { data: "pending3" },
                 ]
             });
         });
