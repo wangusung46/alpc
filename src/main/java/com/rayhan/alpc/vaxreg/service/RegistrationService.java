@@ -8,7 +8,7 @@ import java.text.ParseException;
 import java.util.List;
 
 /**
- * @author Khanza
+ * @author Raihan
  *
  */
 public interface RegistrationService {

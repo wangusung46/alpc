@@ -21,12 +21,14 @@ public class RegistrationServiceImpl implements RegistrationService {
     @Override
     public List<Registration> getRegistrations() throws JsonProcessingException, FileNotFoundException, IOException, ParseException {
         List<Registration> response = new ArrayList<>();
+        Long id = 1L;
         try (BufferedReader br = new BufferedReader(new FileReader("vaxreg_state.csv"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(",");
                 if (!line.equals("date,state,total,phase2,mysj,call,web,children,children_solo,adolescents,elderly,comorb,oku")) {
                     Registration registration = new Registration();
+                    registration.setId(id++);
                     registration.setDate(values[0]);
                     registration.setState(values[1]);
                     registration.setTotal(Integer.parseInt(values[2]));

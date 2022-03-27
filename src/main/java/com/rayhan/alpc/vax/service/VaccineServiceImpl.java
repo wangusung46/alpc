@@ -93,6 +93,7 @@ public class VaccineServiceImpl implements VaccineService {
     @Override
     public List<WeekType> getVaccinesByType() throws JsonProcessingException, FileNotFoundException, IOException, ParseException {
         List<WeekType> response = new ArrayList<>();
+        LocalDate tempDate = LocalDate.of(1999, 1, 1);
         try (BufferedReader br = new BufferedReader(new FileReader("vax_state.csv"))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -106,7 +107,7 @@ public class VaccineServiceImpl implements VaccineService {
 
                     WeekType weekType = new WeekType();
                     List<Type> types = new ArrayList<>();
-                    LocalDate tempDate = LocalDate.of(1999, 1, 1);
+                    
                     Integer i = 1;
                     Type type1 = new Type();
                     Type type2 = new Type();
@@ -182,7 +183,7 @@ public class VaccineServiceImpl implements VaccineService {
                     if (isLocalDateInTheSameWeek(tempDate, LocalDate.parse(values[0])) == false) {
 
                         tempDate = LocalDate.parse(values[0]);
-
+                        
                         types.add(type1);
                         types.add(type2);
                         types.add(type3);
@@ -200,6 +201,7 @@ public class VaccineServiceImpl implements VaccineService {
                         weekType.setWeek("Week " + values[0]);
                         weekType.setTypes(types);
                         response.add(weekType);
+                        
                         i++;
                     }
                 }
@@ -250,7 +252,6 @@ public class VaccineServiceImpl implements VaccineService {
                         minChild = Integer.parseInt(values[8]);
                         
                     }
-                    System.out.println(maxMin);
                     if (isLocalDateInTheSameWeek(temp, LocalDate.parse(values[0])) == false) {
 
                         maxMin.setMaxAdult(maxAdult);
@@ -268,7 +269,6 @@ public class VaccineServiceImpl implements VaccineService {
                         weekMaxMin.setWeek("Week " + values[0]);
                         weekMaxMin.setMaxMins(maxMins);
                         response.add(weekMaxMin);
-                        System.out.println(response);
                     }
 
                 }

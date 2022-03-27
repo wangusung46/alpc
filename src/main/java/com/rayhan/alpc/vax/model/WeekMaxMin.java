@@ -9,7 +9,7 @@ import lombok.Data;
 
 /**
  *
- * @author Khanza
+ * @author Raihan
  */
 @Data
 public class WeekMaxMin {

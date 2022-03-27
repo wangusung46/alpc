@@ -19,11 +19,11 @@ import org.springframework.stereotype.Component;
 
 /**
  *
- * @author Khanza
+ * @author Raihan
  */
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
-public class MyCORSFilter implements Filter {
+public class CORSFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {

@@ -4,12 +4,11 @@
  */
 package com.rayhan.alpc.vax.model;
 
-import java.util.Date;
 import lombok.Data;
 
 /**
  *
- * @author Khanza
+ * @author Raihan
  */
 @Data
 public class Vaccine {

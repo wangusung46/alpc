@@ -1,8 +1,6 @@
 package com.rayhan.alpc.vax.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.rayhan.alpc.vax.model.MaxMin;
-import com.rayhan.alpc.vax.model.Type;
 import com.rayhan.alpc.vax.model.Vaccine;
 import com.rayhan.alpc.vax.model.WeekMaxMin;
 import com.rayhan.alpc.vax.model.WeekType;

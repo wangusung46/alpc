@@ -4,17 +4,16 @@
  */
 package com.rayhan.alpc.vaxreg.model;
 
-import java.util.Date;
 import lombok.Data;
 
 /**
  *
- * @author Khanza
+ * @author Raihan
  */
 @Data
 public class Registration {
     
-    private Long id = 0L;
+    private Long id;
     private String date;
     private String state;
     private Integer total;
@@ -28,9 +27,5 @@ public class Registration {
     private Integer elderly;
     private Integer comorb;
     private Integer oku;
-
-    public Registration() {
-        id++;
-    }
     
 }
