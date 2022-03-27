@@ -107,7 +107,7 @@ public class VaccineServiceImpl implements VaccineService {
 
                     WeekType weekType = new WeekType();
                     List<Type> types = new ArrayList<>();
-                    
+
                     Integer i = 1;
                     Type type1 = new Type();
                     Type type2 = new Type();
@@ -183,7 +183,7 @@ public class VaccineServiceImpl implements VaccineService {
                     if (isLocalDateInTheSameWeek(tempDate, LocalDate.parse(values[0])) == false) {
 
                         tempDate = LocalDate.parse(values[0]);
-                        
+
                         types.add(type1);
                         types.add(type2);
                         types.add(type3);
@@ -201,7 +201,7 @@ public class VaccineServiceImpl implements VaccineService {
                         weekType.setWeek("Week " + values[0]);
                         weekType.setTypes(types);
                         response.add(weekType);
-                        
+
                         i++;
                     }
                 }
@@ -219,7 +219,7 @@ public class VaccineServiceImpl implements VaccineService {
         Integer minAdult = Integer.MAX_VALUE;
         Integer maxChild = Integer.MIN_VALUE;
         Integer minChild = Integer.MAX_VALUE;
-        
+
         LocalDate temp = LocalDate.of(1999, 1, 1);
 
         try (BufferedReader br = new BufferedReader(new FileReader("vax_state.csv"))) {
@@ -238,19 +238,19 @@ public class VaccineServiceImpl implements VaccineService {
                     MaxMin maxMin = new MaxMin();
                     if (maxAdult < Integer.parseInt(values[6])) {
                         maxAdult = Integer.parseInt(values[6]);
-                        
+
                     }
                     if (minAdult > Integer.parseInt(values[6])) {
                         minAdult = Integer.parseInt(values[6]);
-                        
+
                     }
                     if (maxChild < Integer.parseInt(values[8])) {
                         maxChild = Integer.parseInt(values[8]);
-                        
+
                     }
                     if (minChild > Integer.parseInt(values[8])) {
                         minChild = Integer.parseInt(values[8]);
-                        
+
                     }
                     if (isLocalDateInTheSameWeek(temp, LocalDate.parse(values[0])) == false) {
 
@@ -258,7 +258,7 @@ public class VaccineServiceImpl implements VaccineService {
                         maxMin.setMinAdult(minAdult);
                         maxMin.setMaxChild(maxChild);
                         maxMin.setMinChild(minChild);
-                        
+
                         temp = LocalDate.parse(values[0]);
                         maxAdult = Integer.MIN_VALUE;
                         minAdult = Integer.MAX_VALUE;
