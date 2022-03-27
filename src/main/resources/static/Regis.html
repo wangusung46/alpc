@@ -77,6 +77,9 @@
                 ajax: function (data, callback, settings) {
                     $.ajax({
                         url: "http://localhost:8080/registration",
+                        type: 'GET',
+                        crossDomain: true,
+                        dataType: 'json',
                     }).then(function (json, textStatus, jqXHR) {
                         json["data"] = json
                         console.log(json["data"])
