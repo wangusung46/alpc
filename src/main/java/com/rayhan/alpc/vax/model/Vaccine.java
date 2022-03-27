@@ -10,6 +10,7 @@ import lombok.Data;
  *
  * @author Raihan
  */
+// RESPONSE AND MODEL DATA VACCINE
 @Data
 public class Vaccine {
 

@@ -13,6 +13,7 @@ import java.util.List;
  */
 public interface RegistrationService {
 
+//    INTERFACE REGISTRATION SERVICE
     public List<Registration> getRegistrations() throws JsonProcessingException, FileNotFoundException, IOException, ParseException;
 
 }

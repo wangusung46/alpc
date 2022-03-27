@@ -11,6 +11,7 @@ import lombok.Data;
  *
  * @author Raihan
  */
+//FOR PAYLOAD MAX MIN / WEEK DATA
 @Data
 public class WeekMaxMin {
     

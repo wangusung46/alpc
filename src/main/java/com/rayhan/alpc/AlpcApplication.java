@@ -15,6 +15,7 @@ public class AlpcApplication {
         SpringApplication.run(AlpcApplication.class, args);
     }
 
+//    HOME URL
     @RequestMapping("/regis")
     public ModelAndView home() {
         ModelAndView modelAndView = new ModelAndView();
@@ -22,6 +23,7 @@ public class AlpcApplication {
         return modelAndView;
     }
 
+//    ALLOW CORS ORIGIN
     @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {

@@ -10,6 +10,7 @@ import lombok.Data;
  *
  * @author Raihan
  */
+// REGISTRATION REQUEST AND MODEL
 @Data
 public class Registration {
     

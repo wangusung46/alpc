@@ -20,6 +20,7 @@ public class RegistrationController {
 
     private final RegistrationService registrationService;
 
+//  API CONTROLLER FOR REGISTRATION DATA
     @GetMapping(value = "/registration", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> doRegistrations() throws JsonProcessingException, IOException, FileNotFoundException, ParseException {
         List<Registration> response = new ArrayList<>();

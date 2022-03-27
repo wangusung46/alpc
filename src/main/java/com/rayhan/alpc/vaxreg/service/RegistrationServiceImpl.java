@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 @Transactional
 public class RegistrationServiceImpl implements RegistrationService {
 
+//    FOR REGISTRATION SERVICE
     @Override
     public List<Registration> getRegistrations() throws JsonProcessingException, FileNotFoundException, IOException, ParseException {
         List<Registration> response = new ArrayList<>();

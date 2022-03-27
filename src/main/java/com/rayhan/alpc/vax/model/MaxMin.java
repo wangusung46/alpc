@@ -10,6 +10,7 @@ import lombok.Data;
  *
  * @author Raihan
  */
+//RESPONSE MIN MAX DATA
 @Data
 public class MaxMin {
     

@@ -38,10 +38,10 @@
                         <thead class="text-center">
                             <tr>
                                 <th>Week</th>
-                                <th>Total Phizer 1</th>
-                                <th>Total Phizer 2</th>
-                                <th>Total Phizer 3</th>
-                                <th>Total Sinovac 1</th>
+                                <th>Vaccine Total Max Adult</th>
+                                <th>Vaccine Total Min Adult</th>
+                                <th>Vaccine Total Max Child</th>
+                                <th>Vaccine Total Min Child</th>
                             </tr>
                         </thead>
                         <tbody id="dataitems">
@@ -67,7 +67,7 @@
                 responsive: true,
                 ajax: function (data, callback, settings) {
                     $.ajax({
-                        url: "http://localhost:8080/vaccine/max-min",
+                        url: "https://immense-island-33949.herokuapp.com/vaccine/max-min",
                         type: 'GET',
                         crossDomain: true,
                         dataType: 'json',
@@ -80,9 +80,9 @@
                 columns: [
                     { data: "week" },
                     { data: "maxMins.0.maxAdult" },
+                    { data: "maxMins.0.minAdult" },
                     { data: "maxMins.0.maxChild" },
-                    { data: "maxMins.0.maxAdult" },
-                    { data: "maxMins.0.maxAdult" }
+                    { data: "maxMins.0.minChild" }
                 ]
             });
         });

@@ -11,6 +11,7 @@ import lombok.Data;
  *
  * @author Raihan
  */
+//FOR PAYLOAD WEEK DATA
 @Data
 public class WeekType {
     

@@ -25,12 +25,15 @@ import org.springframework.stereotype.Service;
 @Transactional
 public class VaccineServiceImpl implements VaccineService {
 
+//    GET ALL AND PARAMETER DATA VACCINE
     @Override
     public List<Vaccine> getVaccines(String month, String state) throws JsonProcessingException, FileNotFoundException, IOException, ParseException {
         List<Vaccine> response = new ArrayList<>();
+//        CALL CSV DATA
         try (BufferedReader br = new BufferedReader(new FileReader("vax_state.csv"))) {
             String line;
             Long id = 1L;
+//            LOOP CSV DATA
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(",");
                 if (!line.equals("date,state,daily_partial,daily_full,daily_booster,daily,"
@@ -45,6 +48,7 @@ public class VaccineServiceImpl implements VaccineService {
                     if (!values[0].matches(month + ".*") && !month.isEmpty()) {
                         continue;
                     }
+//                  SET RESPONSE
                     Vaccine vaccine = new Vaccine();
                     vaccine.setId(id++);
                     vaccine.setDate(values[0]);
@@ -90,6 +94,7 @@ public class VaccineServiceImpl implements VaccineService {
         return response;
     }
 
+//  GET VACCINE BY TYPE
     @Override
     public List<WeekType> getVaccinesByType() throws JsonProcessingException, FileNotFoundException, IOException, ParseException {
         List<WeekType> response = new ArrayList<>();
@@ -211,6 +216,7 @@ public class VaccineServiceImpl implements VaccineService {
         return response;
     }
 
+//  GET VACCINE MIN MAX
     @Override
     public List<WeekMaxMin> getVaccinesByMaxMin() throws JsonProcessingException, FileNotFoundException, IOException, ParseException {
         List<WeekMaxMin> response = new ArrayList<>();
@@ -278,6 +284,7 @@ public class VaccineServiceImpl implements VaccineService {
         return response;
     }
 
+//    CHECK WEEK DATA
     private Boolean isLocalDateInTheSameWeek(LocalDate date1, LocalDate date2) {
         LocalDate sundayBeforeDate1 = date1.with(TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY));
         LocalDate saturdayAfterDate1 = date1.with(TemporalAdjusters.nextOrSame(DayOfWeek.SATURDAY));

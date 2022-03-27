@@ -13,6 +13,7 @@ import java.util.List;
  * @author Raihan
  *
  */
+//INTERFACE DATA VACCINE
 public interface VaccineService {
 
     public List<Vaccine> getVaccines(String month, String state) throws JsonProcessingException, FileNotFoundException, IOException, ParseException;

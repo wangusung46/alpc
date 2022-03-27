@@ -23,6 +23,7 @@ public class VaccineController {
 
     private final VaccineService vaccineService;
 
+//    GET ALL AND PARAMETER DATA VACCINE
     @GetMapping(value = "/vaccine", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> doVaccines(@RequestParam String month, @RequestParam String state) throws JsonProcessingException, IOException, FileNotFoundException, ParseException {
         List<Vaccine> response = new ArrayList<>();
@@ -30,6 +31,7 @@ public class VaccineController {
         return ResponseEntity.ok(response);
     }
     
+//    GET MIN MAX VACCINE DATA
     @GetMapping(value = "/vaccine/max-min", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> doVaccinesByMaxMin() throws JsonProcessingException, IOException, FileNotFoundException, ParseException {
         List<WeekMaxMin> response = new ArrayList<>();
@@ -37,6 +39,7 @@ public class VaccineController {
         return ResponseEntity.ok(response);
     }
     
+//    GET TYPE VACCINE
     @GetMapping(value = "/vaccine/type", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> doVaccinesByType() throws JsonProcessingException, IOException, FileNotFoundException, ParseException {
         List<WeekType> response = new ArrayList<>();
